@@ -1,0 +1,204 @@
+#Git bash terminal // Proof of work
+
+
+nasha@dessin MINGW64 /c
+$ ls
+'$Recycle.Bin'/  'Documents and Settings'@   OneDriveTemp/  'Program Files'/         Recovery/                     Windows/       inetpub/
+'$SysReset'/      DumpStack.log.tmp          PerfLogs/      'Program Files (x86)'/  'System Volume Information'/   css-intro/     pagefile.sys
+'$WINDOWS.~BT'/   Intel/                     ProcLogs/       ProgramData/            Users/                        hiberfil.sys   swapfile.sys
+
+nasha@dessin MINGW64 /c
+$ cd css-intro/
+
+nasha@dessin MINGW64 /c/css-intro (main)
+$ mkdir cli_challenge
+
+nasha@dessin MINGW64 /c/css-intro (main)
+$ cd cli_challenge
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ touch file1.txt
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ touch file2.txt
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ touch file3.txt
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git add .
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   file1.txt
+        new file:   file2.txt
+        new file:   file3.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    ../index.css
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../app.js
+
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git commit -m "New directory with 3 txt files"
+[main 5ed9e59] New directory with 3 txt files
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 cli_challenge/file1.txt
+ create mode 100644 cli_challenge/file2.txt
+ create mode 100644 cli_challenge/file3.txt
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ mkdir backup
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git mv file1.txt backup
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git commit -m "Moved file1.txt to backup"
+[main 6ed9e64] Moved file1.txt to backup
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename cli_challenge/{ => backup}/file1.txt (100%)
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git mv file2.txt renamed_file.txt
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git add .
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git commit -m "Renamed file2.txt to renamed_file.txt"
+[main 008eed6] Renamed file2.txt to renamed_file.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename cli_challenge/{file2.txt => renamed_file.txt} (100%)
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ cp renamed_file.txt backup
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git add .
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   backup/renamed_file.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    ../index.css
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../app.js
+
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ rm file3.txt
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git commit -m "Deleted file3.txt"
+[main e571a91] Deleted file3.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 cli_challenge/backup/renamed_file.txt
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    file3.txt
+        deleted:    ../index.css
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../app.js
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ rm backup
+rm: cannot remove 'backup': Is a directory
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ rm -r backup
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git add .
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ git commit -m "Deleted backup and its files"
+[main 8b40732] Deleted backup and its files
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 cli_challenge/backup/file1.txt
+ delete mode 100644 cli_challenge/backup/renamed_file.txt
+ delete mode 100644 cli_challenge/file3.txt
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ cd .
+
+nasha@dessin MINGW64 /c/css-intro/cli_challenge (main)
+$ cd ..
+
+nasha@dessin MINGW64 /c/css-intro (main)
+$ rm -r cli_challenge
+
+nasha@dessin MINGW64 /c/css-intro (main)
+$ git commit -m "Deleted cli_challenge and its files"
+On branch main
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    cli_challenge/renamed_file.txt
+        deleted:    index.css
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        app.js
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+nasha@dessin MINGW64 /c/css-intro (main)
+$ git push
+Enumerating objects: 18, done.
+Counting objects: 100% (18/18), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (17/17), 1.84 KiB | 470.00 KiB/s, done.
+Total 17 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/nash-dessin/css-intro.git
+To https://github.com/nash-dessin/2607.git
+   a0477ad..8b40732  main -> main
+
+nasha@dessin MINGW64 /c/css-intro (main)
+$
