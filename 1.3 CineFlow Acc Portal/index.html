@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Content Creator - CineFlow</title>
+    <link rel="stylesheet" href="style.css">   
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 New Content Creator Registration</h1>
+        <p style="text-align: center; color: #666;">Join CineFlow and start your creative journey today!</p>
+        
+        <!-- Multimedia Section -->
+        <div class="multimedia-section">
+            <h2>Welcome Video</h2>
+            <video controls poster="placeholder.jpg" width="500">
+                <source src="promo-video.mp4" type="video/mp4">
+                <source src="promo-video.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+            
+            <h3>Helpful Tips Audio Guide</h3>
+            <audio controls style="width: 500px;">
+                <source src="tips-guide.mp3" type="audio/mpeg">
+                <source src="tips-guide.ogg" type="audio/ogg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        
+        <!-- Registration Form -->
+        <form action="register.php" method="POST" enctype="multipart/form-data">
+            
+            <!-- Personal Information -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                
+                <div class="form-group">
+                    <label for="fullname">Full Name *</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="e.g., Nasha Hinga" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="e.g., n.whinga@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" minlength="8" placeholder="Minimum 8 characters" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of Birth (Must be 18+) *</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" name="username" placeholder="Alphanumeric only (no spaces)" pattern="^[a-zA-Z0-9]+$" required>
+                </div>
+            </fieldset>
+            
+            <!-- Profile Picture -->
+            <fieldset>
+                <legend>Profile Setup</legend>
+                
+                <div class="form-group">
+                    <label for="profilepic">Profile Picture (.jpg or .png) *</label>
+                    <input type="file" id="profilepic" name="profilepic" accept=".jpg,.jpeg,.png" required>
+                </div>
+            </fieldset>
+            
+            <!-- Channel Settings -->
+            <fieldset>
+                <legend>Channel Settings</legend>
+                
+                <div class="form-group">
+                    <label for="upload-volume">Expected Weekly Upload Volume (0-10 videos)</label>
+                    <input type="range" id="upload-volume" name="upload-volume" min="0" max="10" value="5">
+                    <div class="range-value">Selected: <span id="range-display">5</span> videos per week</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Content Genres *</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="tech" name="genres" value="Tech" required>
+                        <label for="tech">Tech</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="lifestyle" name="genres" value="Lifestyle">
+                        <label for="lifestyle">Lifestyle</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="gaming" name="genres" value="Gaming">
+                        <label for="gaming">Gaming</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="education" name="genres" value="Education">
+                        <label for="education">Education</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="entertainment" name="genres" value="Entertainment">
+                        <label for="entertainment">Entertainment</label>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <!-- Form Actions -->
+            <div class="button-group">
+                <button type="submit">Register Now</button>
+                <button type="reset">Clear Form</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Update range slider display value
+        const rangeSlider = document.getElementById('upload-volume');
+        const rangeDisplay = document.getElementById('range-display');
+        
+        rangeSlider.addEventListener('input', function() {
+            rangeDisplay.textContent = this.value;
+        });
+        
+        // Basic form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const dob = new Date(document.getElementById('dob').value);
+            const today = new Date();
+            let age = today.getFullYear() - dob.getFullYear();
+            const monthDiff = today.getMonth() - dob.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+            
+            if (age < 18) {
+                e.preventDefault();
+                alert('You must be at least 18 years old to register.');
+            }
+            
+            const genreCheckboxes = document.querySelectorAll('input[name="genres"]:checked');
+            if (genreCheckboxes.length === 0) {
+                e.preventDefault();
+                alert('Please select at least one content genre.');
+            }
+        });
+    </script>
+</body>
+</html>
